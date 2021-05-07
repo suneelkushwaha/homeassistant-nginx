@@ -1,0 +1,27 @@
+version: '2.1'
+volumes:
+  resin-data:
+services:
+  ha:
+    build: ./ha
+    ports:
+      - "8123:8123"
+    volumes:
+      - "resin-data:/data"
+    environment:
+      SERVICE_NAME: 'ha'
+  nginx:
+    build: ./nginx
+    volumes:
+      - "resin-data:/etc"
+    ports:
+      - 80:80
+  hass-configurator:
+    image: "causticlab/hass-configurator-docker:arm"
+    restart: always
+    ports:
+      - "3218:3218"
+    volumes:
+      - 'resin-data:/hass-config'
+    environment:
+      - HC_BASEPATH=/hass-config
