@@ -1,5 +1,7 @@
 # Virtual Hosts on nginx (CSC309)
 
+https://gist.github.com/soheilhy/8b94347ff8336d971ad0#file-nginxproxy-md?export=1
+
 When hosting our web applications, we often have one public IP
 address (_i.e.,_ an IP address visible to the outside world)
 using which we want to host multiple web apps. For example, one
